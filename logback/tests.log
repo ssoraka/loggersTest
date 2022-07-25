@@ -1,0 +1,15 @@
+251  [main] INFO  example.Main - info
+252  [main] WARN  example.Main - warn
+252  [main] ERROR example.Main - error
+253  [Thread-0] WARN  example.workers.Worker - warn
+254  [Thread-0] ERROR example.workers.Worker - error
+1255 [Thread-0] WARN  example.workers.Worker - warn
+1255 [Thread-0] ERROR example.workers.Worker - error
+2258 [Thread-0] WARN  example.workers.Worker - warn
+2258 [Thread-0] ERROR example.workers.Worker - error
+3258 [Thread-0] WARN  example.workers.Worker - warn
+3258 [Thread-0] ERROR example.workers.Worker - error
+4263 [Thread-0] WARN  example.workers.Worker - warn
+4264 [Thread-0] ERROR example.workers.Worker - error
+5266 [Thread-0] WARN  example.workers.Worker - warn
+5266 [Thread-0] ERROR example.workers.Worker - error

@@ -1,0 +1,10 @@
+2022-07-24 22:52:40,806 WARN e.w.Worker [Thread-0] warn
+2022-07-24 22:52:40,818 ERROR e.w.Worker [Thread-0] error
+2022-07-24 22:52:41,819 DEBUG e.w.Worker [Thread-0] debug
+2022-07-24 22:52:41,820 INFO e.w.Worker [Thread-0] русский текст
+2022-07-24 22:52:41,820 WARN e.w.Worker [Thread-0] warn
+2022-07-24 22:52:41,820 ERROR e.w.Worker [Thread-0] error
+2022-07-24 22:52:42,826 DEBUG e.w.Worker [Thread-0] debug
+2022-07-24 22:52:42,826 INFO e.w.Worker [Thread-0] русский текст
+2022-07-24 22:52:42,826 WARN e.w.Worker [Thread-0] warn
+2022-07-24 22:52:42,827 ERROR e.w.Worker [Thread-0] error

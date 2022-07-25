@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+    <Appenders>
+<!--        https://logging.apache.org/log4j/2.x/manual/appenders.html-->
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+<!--            <PatternLayout disableAnsi="false" pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %highlight{%msg%n}" charset="utf8"/>-->
+            <PatternLayout disableAnsi="false" pattern="%highlight{[%-20.-20maxLen{%-5level %logger{2}.%method()}{}]}{trace=bright cyan} %msg%n" charset="utf8"/>
+<!--            <PatternLayout disableAnsi="false" pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %highlight{%msg%n}{ERROR=bright cyan}" charset="utf8"/>-->
+<!--            <PatternLayout disableAnsi="false" pattern="%highlight{%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n}" charset="utf8"/>-->
+<!--            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" charset="utf8"/>-->
+        </Console>
+
+<!--        append="false" - перезаписывать файл-->
+        <File name="LogToFile" fileName="logs/app.log" append="false">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+<!--                <Pattern>%d %p %c{1.2} [%t] %m%n</Pattern>-->
+<!--                <Pattern>%d %p %c [%t] %m%n</Pattern>-->
+            </PatternLayout>
+        </File>
+
+        <RollingFile name="LogToRollingFile" fileName="logs/appSize.log"
+                     filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+<!--                по дате создания-->
+                <TimeBasedTriggeringPolicy />
+<!--                <SizeBasedTriggeringPolicy size="10 MB"/>-->
+                <SizeBasedTriggeringPolicy size="1000 B"/>
+            </Policies>
+<!--            количество файлов, по дефолту 7-->
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+    </Appenders>
+
+
+    <loggers>
+        <!-- avoid duplicated logs with additivity=false -->
+        <Logger name="example.workers" level="debug" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="LogToFile"/>
+            <AppenderRef ref="LogToRollingFile"/>
+        </Logger>
+
+        <Logger name="example" level="info" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+            <AppenderRef ref="LogToFile"/>
+            <AppenderRef ref="LogToRollingFile"/>
+        </Logger>
+
+        <root level="error">
+            <appenderRef ref="LogToConsole"/>
+        </root>
+    </loggers>
+</Configuration>
